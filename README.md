@@ -1,65 +1,24 @@
-# SocialConnect — Gestão de apoio social
+## Declaração de Uso de IA
 
-API para organizar beneficiários, doações e estoque de produtos de instituições sociais.
+### Ferramentas utilizadas
 
-## Tecnologias
+- [x] ChatGPT / Codex
 
-Java 21, Spring Boot, Spring Data JPA, Bean Validation e Flyway. O desenvolvimento usa H2 em memória; o projeto também inclui o driver PostgreSQL e testes com Testcontainers.
+### Como utilizei
 
-## Executar
+Utilizei IA para adaptar o projeto do repositório base, reorganizar a documentação e renomear variáveis internas e métodos auxiliares, mantendo os conceitos e as regras de negócio. Também utilizei a ferramenta para corrigir imports alterados incorretamente durante essa adaptação e obter orientações sobre os comandos do Git.
 
-Instale o JDK 21. Na pasta do projeto, execute:
+Os controllers, DTOs, entidades, migrations e testes já estavam presentes no projeto base.
 
-```bash
-./mvnw spring-boot:run
-```
+### Prompts utilizados — resumo
 
-No Windows:
+- Adaptar o projeto, mantendo os conceitos, e remover materiais de aulas e atividades.
+- Identificar e corrigir os erros de compilação apresentados em uma imagem.
+- Informar os comandos para enviar o projeto ao GitHub.
+- Preparar uma declaração transparente de uso de IA.
 
-```bat
-mvnw.cmd spring-boot:run
-```
+### Revisão e autenticidade
 
-| Ferramenta | Endereço local |
-| --- | --- |
-| Swagger | http://localhost:8080/swagger-ui.html |
-| Contrato OpenAPI | http://localhost:8080/api-docs |
-| Console H2 | http://localhost:8080/h2-console |
+As alterações foram realizadas com assistência de IA sobre um projeto existente. A mudança de nomes e documentação não representa autoria integral do código.
 
-No console H2, use `jdbc:h2:mem:socialconnectdb`, usuário `sa` e senha vazia. Os dados desse banco são temporários.
-
-## Recursos disponíveis
-
-| Módulo | Rota base | Operações |
-| --- | --- | --- |
-| Beneficiários | `/api/v1/beneficiarios` | Listar, consultar, cadastrar, atualizar, atualizar parcialmente e excluir |
-| Doações | `/api/v1/doacoes` | Listar, consultar, cadastrar, atualizar, atualizar parcialmente e excluir |
-| Produtos | `/api/v1/produtos` | Listar, consultar, cadastrar, atualizar e excluir |
-
-As listagens possuem paginação. Beneficiários permitem filtros por nome e CPF; doações, por intervalo de datas e tipo; produtos, por nome e categoria. O cadastro de doadores está modelado na persistência, sem controller próprio.
-
-## Regras principais
-
-- CPF de beneficiário não pode ser duplicado.
-- Doações devem estar vinculadas a um doador existente.
-- Produtos devem ter nome único, sem diferenciar maiúsculas e minúsculas.
-- Estoque negativo é rejeitado; a resposta sinaliza estoque abaixo do mínimo.
-- Campos de entrada passam por validações e os erros seguem o formato Problem Details.
-
-## Organização
-
-Cada recurso reúne controllers, DTOs, entidades, repositories e services. Os controllers recebem as requisições; os services executam as regras; os repositories acessam o banco. As pastas `config`, `exception` e `validation` concentram os componentes compartilhados. As migrations ficam em `src/main/resources/db/migration`.
-
-## Testes
-
-Testes unitários:
-
-```bash
-./mvnw test -Dtest='*ServiceTest,*ValidatorTest'
-```
-
-Suíte completa (requer Docker para os testes de integração):
-
-```bash
-./mvnw clean test
-```
+A IA não executou a compilação nem os testes, pois seu ambiente tinha Java 17 e o projeto exige Java 21.
